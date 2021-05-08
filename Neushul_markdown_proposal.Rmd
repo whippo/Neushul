@@ -76,15 +76,18 @@ TODO:
 # Background
 
 
-Goes here (@neushul_studies_1967).
+Goes here [@neushul_studies_1967].
 
 ```{r, echo = FALSE}
 
 ## Load Libraries
 
 library(tidyverse)
+library(gt)
 library(viridis)
 library(ggmap)
+library(vistime)
+library(plotly)
 
 
 theme_set(theme_classic())
@@ -117,7 +120,7 @@ x_sections <- read_csv("data/extraction/Neushul_Xsection_data-extractions.csv")
 ```{r}
 # Map of transect sites
 
-FHL <- get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = TRUE, zoom = 16)
+FHL <- get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 16)
 ggmap(FHL) +
   geom_point(aes(x = longitude, y = latitude), data = site_deets,
              alpha = .5, color="darkred", size = 3)
@@ -125,27 +128,90 @@ ggmap(FHL) +
 
 # Methods & Timeline
 
+## Data Extraction
 
+All of the data from Neushul Table 1 (community components) and Figures 6-9 (transect cross sections) have already been extracted. Starting GPS points for SCUBA transects were extracted from Figure 1 using Google Earth, and transect heading and length were taken by overlaying map images with compass bearings in GIMP, and referencing individual transect lengths in Figures 6-9. Remaining data to extract includes Figure 2 (clustering dendrogram) and Table 2 (dendrogram summary).
 
-```{r, out.width = "50%", fig.align = "center", fig.cap = "\\label{fig:map}Map of Oregon Marine Reserve locations (from https://oregonmarinereserves.com/)"}
+## Extracted Data Analyses
 
-# knitr::include_graphics("Images/allmarinereserves.png")
+Data extracted will be analysed and transformed to provide additional data not explicity included in the publication. These data include:
+
+* Already extracted
+  + Transect GPS (Google Earth)
+  + Transect bearings (GIMP)
+* To be extracted 
+  + Updated algal taxonomy (algaebase.org)
+  + Dendrogram distances (GIMP)
+  + Algal frequency values (R)
+  + Equivalent method for cluster analysis (R)
+  + Addition summaries of diversity and overall transect similarity/differences (R)
+  
+## Field Pilot
+
+To identify more applicable methods to replicate data gathered in Neushul and to assess the time taken for each transect survey, a limited number of exploratory dives will be made around Brown Island. Between one and three representative transects will be identified from the original paper for this pilot. Dives will be made with the following specific goals (current plan is listed in parenthesis next to each item):
+
+1. Determine best methods for data collection
+  + laying transect tape (from GPS starting point along heading to depth [buddy 1]; data collected on return)
+  + video data capture (using Vaquita underwater camera w/ lights; centered on transect line moving shoreward [buddy 2])
+  + uniform point count data collection (collected every 5 feet along transect: substrate type, all organsims directly above/below line on meter tape [buddy 1])
+2. Estimate time needed for field methods
+  + mean time in minutes for each transect (current estimate ~60 min)
+  + multiply by number of transects (11 Brown Island transects * 60 min = 660 min)
+  + identify likely factors that may change times: depth, length (a more realistic number of dives for this data is between 15-20 for all data collection)
+
+## Estimated Dives
+
+The pilot data can likely be collected in 3-5 dives. Current estimates of final number of data collection dives will likely be at minimum 15 dives, and probably closer to 20. 
+
+## Planned Timeline
+
+```{r}
+
+# timeline data
+neushul_timeline <- read.csv(text="event,start,end
+                       Data Extraction,2021-05-01,2021-06-30
+                       Pilot Surveys,2021-06-15,2021-08-20
+                       Pilot Data Analysis | Manuscript Draft,2021-08-20,2022-04-15
+                       Field Data Collection,2022-04-15,2022-06-30
+                       Final Analysis,2022-06-30, 2022-08-31
+                       Final Manuscript, 2022-08-01, 2022-09-30")
+
+gg_vistime(neushul_timeline, optimize_y = FALSE, linewidth = 20) 
 
 ```
 
-
-
-<br>
 
 
 # Budget
 
-# References
-
+Current estimates for a two week stay at FHL. Costs for pilot-phase boat time may be covered by boat time already allocated to RW in 2021.
 
 ```{r}
+neushul_budget <- read.csv(text=
+                      "phase, item, unit, quantity, cost, notes
+                      pilot, boat time, hours, 6, 86.00, might be covered by RW
+                      main project, housing, weeks, 2, 654.00, FHL 2-bedroom unit 
+                      main project, facility fee, weeks, 2, 92.00, FHL for 2 people
+                      main project, dive fee, year, 1, 210.00, FHL for 2 people
+                      main project, EH&S fee, year, 1, 454.00, FHL for 2 people
+                      main project, boat fee, hours, 40, 86.00, FHL estimate for 20 dives")
+neushul_budget <- neushul_budget %>%
+  mutate(across(cost, as.double),
+         total = quantity*cost)
 
-### This can be a useful function to play a sound at the end of a long script
-
-#beepr::beep()
+neushul_budget_table <- gt(neushul_budget) %>%
+  fmt_currency(
+    columns = c('cost', 'total'),
+    currency = "USD") %>%
+    grand_summary_rows(
+    columns = 'total',
+    fns = 'sum'
+  )
+neushul_budget_table      
+                
 ```
+
+
+# References
+
+<!-- end of document -->
