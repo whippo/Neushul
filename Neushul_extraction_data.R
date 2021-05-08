@@ -44,6 +44,7 @@
 
 library(tidyverse)
 library(algaeClassify)
+library(ggmap)
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # READ IN AND PREPARE DATA                                                     ####
@@ -68,7 +69,13 @@ x_sections <- read_csv("data/extraction/Neushul_Xsection_data-extractions.csv")
 algae_list <- spp_list_algaebase(Table_1, phyto.name = 'Name', lakename = "",
                    long = FALSE, write = FALSE)
 
-############### SUBSECTION HERE
+############### Map experiments
+
+library(ggmap)
+FHL <- get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = TRUE, zoom = 16)
+ggmap(FHL) +
+  geom_point(aes(x = longitude, y = latitude), data = site_deets,
+             alpha = .5, color="darkred", size = 3)
 
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#

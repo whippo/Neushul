@@ -20,7 +20,8 @@ output:
     toc: yes
     toc_depth: '4'
 subtitle: Neushul Revisited
-  ---
+bibliography: NeushulRedux.bib
+---
 
 
 
@@ -75,7 +76,7 @@ TODO:
 # Background
 
 
-Goes here.
+Goes here (@neushul_studies_1967).
 
 ```{r, echo = FALSE}
 
@@ -83,6 +84,7 @@ Goes here.
 
 library(tidyverse)
 library(viridis)
+library(ggmap)
 
 
 theme_set(theme_classic())
@@ -96,12 +98,30 @@ theme_set(theme_classic())
 ```{r}
 # Import all data and manage for analyses/visualizations
 
+# site details extracted
+site_deets <- read_csv("data/extraction/NeushulSiteDetailsPreplan.csv")
+
+# data from table 1
+Table_1 <- read_csv("data/extraction/Neushul_Table_1.csv")
+
+# data from cross-section figures
+x_sections <- read_csv("data/extraction/Neushul_Xsection_data-extractions.csv")
+
 
 ```
 
 
 
 # Approach
+
+```{r}
+# Map of transect sites
+
+FHL <- get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = TRUE, zoom = 16)
+ggmap(FHL) +
+  geom_point(aes(x = longitude, y = latitude), data = site_deets,
+             alpha = .5, color="darkred", size = 3)
+```
 
 # Methods & Timeline
 
