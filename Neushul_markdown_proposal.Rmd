@@ -79,7 +79,7 @@ Algae are the primary trophic resource in many near-shore habitats, and climate 
 
 Fortunately, one such data set was published in 1967 in Ecology by M. Neushul entitled 'Studies of Subtidal Marine Vegetation in Western Washington' [@neushul_studies_1967]. This paper provides a detailed account of algal benthic cover along 12 subtidal transects in the San Juan Islands, and utilized many methods still employed by modern marine ecologists including underwater cameras and traditional slate and pencil data collection.
 
-The goal of this study is to replicate Neushul's study and collect data in a similar manner so that a direct comparison can be made between the current state of algal communities in the San Juan Islands, and a historical baseline that is deeper than most other quantitative data sets we have from that time period. They began their transects in June of 1962, and if the timeline put forth in this proposal is followed, our data collection almost exactly 60 years after. 
+The goal of this study is to replicate Neushul's study and collect data in a similar manner so that a direct comparison can be made between the current state of algal communities in the San Juan Islands, and a historical baseline that is deeper than most other quantitative data sets we have from that time period. They began their transects in June of 1962, and if the timeline put forth in this proposal is followed, our data collection will be almost exactly 60 years after. 
 
 ```{r, echo = FALSE}
 
