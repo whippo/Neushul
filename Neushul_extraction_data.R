@@ -79,17 +79,13 @@ ggmap(FHL) +
 
 
 CoosBay <- get_stamenmap(bbox = c(left = -124.375, bottom = 43.25, right = -124.10, top = 43.50), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 13)
-ggmap(CoosBay) +
-  geom_point(aes(x = longitude, y = latitude), data = site_deets,
-             alpha = .5, color="darkred", size = 3)
+ggmap(CoosBay)
 
 
-Seattle <- get_stamenmap(bbox = c(left = -122.41, bottom = 47.40, right = -122.20, top = 47.80), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 13)
-ggmap(Seattle) +
-  geom_point(aes(x = longitude, y = latitude), data = site_deets,
-             alpha = .5, color="darkred", size = 3)
-
+Seattle <- get_stamenmap(bbox = c(left = -122.46, bottom = 47.40, right = -122.20, top = 47.80), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 14)
+ggmap(Seattle) 
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#
 
 # SCRATCH PAD ####
+
