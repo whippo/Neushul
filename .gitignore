@@ -35,5 +35,8 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
+# html files created by R markdown
+*.html
+
 # R Environment Variables
 .Renviron
