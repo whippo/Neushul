@@ -1,1 +1,30 @@
-Position,Average Depth (m),Org In >1/2 Segments,Num Of Segments Observed,Total Components,Associated Transects,Total Segments In Cluster,Predominant Substrate,Total Area (Percent)
+Position,Average Depth (m),Org In >= 1/2 Segments,Num Of Segments Orgs Observed,Total Components,Associated Transects,Total Segments In Cluster,Predominant Substrate,Num Of Segments Subs Observed,Total Area (Percent)
+1,1.4,Ulvoids,13,7,10 | 13 | 33 | 7,13,rock,13,3.8
+1,1.4,Laminaria,13,7,10 | 13 | 33 | 7,13,rock,13,3.8
+2,5.2,Laminaria,15,13,10 | 18 | 27 | 31,15,rock,12,4.4
+2,5.2,Constantinea,14,13,10 | 18 | 27 | 31,15,rock,12,4.4
+2,5.2,Costaria,9,13,10 | 18 | 27 | 31,15,rock,12,4.4
+3,8.7,Costaria,9,12,27 | 10 | 13 | 31 | 32,9,rock,5,2.7
+3,8.7,Laminaria,8,12,27 | 10 | 13 | 31 | 32,9,rock,5,2.7
+4,4.5,Zostera,18,5,10 | 13 | 27 | 31,18,mud,18,5.3
+4,4.5,Laminaria,14,5,10 | 13 | 27 | 31,18,mud,18,5.3
+5,11.5,Sarcodiotheca,16,10,27 | 31 | 7,16,mud,16,4.7
+5,11.5,Desmarestia,8,10,27 | 31 | 7,16,mud,16,4.7
+5,11.5,Laminaria,8,10,27 | 31 | 7,16,mud,16,4.7
+5,11.5,Agardhiella,8,10,27 | 31 | 7,16,mud,16,4.7
+6,12.7,Rhodymenia pertusa,8,8,27 | 31  ,8,mud,8,2.3
+6,12.7,Agardhiella,4,8,27 | 31  ,8,mud,8,2.3
+6,12.7,Desmarestia,4,8,27 | 31  ,8,mud,8,2.3
+7,14.9,Fauchea,11,14,31 | 18 | 27,11,mud,8,3.2
+7,14.9,Desmarestia,6,14,31 | 18 | 27,11,mud,8,3.2
+8,8.9,Agarum cribosum,12,13,32 | 34 | 10 | 7 | 27 | 18 | 1,13,rock,11,3.8
+8,8.9,turf,8,13,32 | 34 | 10 | 7 | 27 | 18 | 1,13,rock,11,3.8
+8,8.9,crust,8,13,32 | 34 | 10 | 7 | 27 | 18 | 1,13,rock,11,3.8
+9,14.9,Rhodoptilum,10,16,13 | 1 | 10,10,rock,9,2.9
+9,14.9,turf,5,16,13 | 1 | 10,10,rock,9,2.9
+9,14.9,crust,5,16,13 | 1 | 10,10,rock,9,2.9
+10,10.4,Agarum fimbriatum,16,6,3 | 1 | 13 | 33 | 37,16,rock,13,4.7
+11,17.5,Callophyllis,10,10,10 | 18 | 13 | 32 | 33 | 7,10,rock,10,2.9
+11,17.5,crust,7,10,10 | 18 | 13 | 32 | 33 | 7,10,rock,10,2.9
+11,17.5,hydroids,6,10,10 | 18 | 13 | 32 | 33 | 7,10,rock,10,2.9
+11,17.5,turf,5,10,10 | 18 | 13 | 32 | 33 | 7,10,rock,10,2.9
