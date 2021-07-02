@@ -1,0 +1,159 @@
+---
+title: "Neushul Redux Notebook"
+subtitle: "Pilot and Beyond"
+author: "Ross Whippo"
+date: 'Created: 2021-07-01  ; (Updated: `r Sys.Date()`)'
+output:
+  html_document:
+    code_folding: hide
+    df_print: kable
+    fig_caption: yes
+    highlight: tango
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 4
+    toc_float: true
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+  word_document:
+    toc: yes
+    toc_depth: '4'
+
+---
+
+
+
+<style>
+.column-left{
+  float: left;
+  width:48%;
+  text-align: left;
+}
+
+
+.column-right{
+  float: right;
+  width: 48%;
+  text-align: left;
+}
+
+.column-All{
+  float: left;
+  width:100%;
+  text-align: left;
+}
+</style>
+
+
+
+
+```{r setup, include=FALSE}
+
+## Start with tidyverse library, and some default chunk options
+
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.align = 'center')
+
+
+## use the following to manually set the working directory of RMarkdown documents. Note that this needs to be defined in this 'setup' r code chunk and will not work if placed elsewhere
+
+# knitr::opts_knit$set(root.dir = '//60451-desktop/MRGIS/Biology/2021 Synthesis/Site_Summaries')
+
+```
+
+```{r, echo = FALSE}
+
+## Load Libraries
+
+library(tidyverse)
+library(gt)
+library(viridis)
+library(ggmap)
+library(algaeClassify)
+library(vistime)
+library(plotly)
+library(rmarkdown)
+library(DT)
+
+
+theme_set(theme_classic())
+
+```
+
+```{r}
+# Import all data and manage for analyses/visualizations
+
+
+
+```
+
+<!-- 
+
+TODO: 
+
+
+NOTES: 
+Created in 2021 from KEEN_markdown_notebook.Rmd
+
+-->
+
+# General Notes
+
+Funded in part by the Richard R. and Megumi F. Strathmann Endowed Fellowship at Friday Harbor Labs, and the PSA award I got.
+
+# Field Notes
+
+## General Field Notes
+
+### 2021-07-01
+
+Began data collection as part of the FHL Marine Botany final project. 
+
+## Surveys
+
+### Dropcam
+
+2021-07-01
+
+Finished about 40% of first dropcam survey from rowboat. Need to enter metadata into R workbook. Most of the footage was good, GoPro ran about an hour before the 32GB card was full. Need to make sure the light is adjusted properly between each deployment and that the float attached to the GoPro is clear of the lens. 
+
+##@ Snorkel
+
+
+### SCUBA
+
+2021-06-29
+
+Tested methods for data collection via SCUBA with GoPro, transect tape, and UPC datasheet. Need to: wear ankle weights, make longer cord for slate, make place on slate to hold pencil, make intervals along transect pre-written, have letter circle for substrate type, add abbreviations of algae at bottom of sheet for reference.
+
+# Statistical Analysis Notes
+
+
+
+
+
+```{r, echo = FALSE}
+
+## Load Libraries
+
+
+```
+
+
+
+```{r}
+# Import all data and manage for analyses/visualizations
+
+
+
+
+```
+
+
+
+
+<!-- end of document -->

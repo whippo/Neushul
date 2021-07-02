@@ -1,0 +1,274 @@
+---
+title: "Using a historical ecology approach to describe algal community change"
+author: "Ross Whippo & Staci McMahon"
+date: 'Created: 2021-06-23  ; (Updated: `r Sys.Date()`)'
+output:
+  html_document:
+    code_folding: hide
+    df_print: kable
+    fig_caption: yes
+    highlight: tango
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 4
+    toc_float: true
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+  word_document:
+    toc: yes
+    toc_depth: '4'
+subtitle: Neushul Revisited
+bibliography: NeushulRedux.bib
+---
+
+
+
+<style>
+.column-left{
+  float: left;
+  width:48%;
+  text-align: left;
+}
+
+
+.column-right{
+  float: right;
+  width: 48%;
+  text-align: left;
+}
+
+.column-All{
+  float: left;
+  width:100%;
+  text-align: left;
+}
+</style>
+
+
+
+
+```{r setup, include=FALSE}
+
+## Start with tidyverse library, and some default chunk options
+
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.align = 'center')
+
+
+## use the following to manually set the working directory of RMarkdown documents. Note that this needs to be defined in this 'setup' r code chunk and will not work if placed elsewhere
+
+# knitr::opts_knit$set(root.dir = '//60451-desktop/MRGIS/Biology/2021 Synthesis/Site_Summaries')
+
+```
+
+
+
+<!-- 
+
+TODO: 
+
+-->
+
+# Background
+
+Algae are the primary trophic resource in many near-shore habitats, and climate change is rapidly altering these communities [@krumhansl_global_2016; @duarte_climate_2018]. It's important to contextualize surveys with some sort of historical baseline, but comprehensive historical surveys of the benthos are often hard to find. If such historical data is found, it can be a valuable tool for uncovering the structure and trajectory of communities [@carnell_reconstructing_2019; @lindenmayer_value_2012]. In addition, baselines shift through time, altering our expectation of how communities might change in the future [@magurran_long-term_2010; @dayton_sliding_1998]. More complexities arise when considering that methods for data collection change through time. Modern tools allow us to collect ever larger quantities of data with more detail that may not be comparable with historic methods. As such, is difficult to find historical ecological data in the marine realm that is directly comparable to modern data collection. 
+
+Fortunately, one such data set was published in 1967 in Ecology by M. Neushul entitled 'Studies of Subtidal Marine Vegetation in Western Washington' [@neushul_studies_1967]. This paper provides a detailed account of algal benthic cover along 12 subtidal transects in the San Juan Islands, and utilized many methods still employed by modern marine ecologists including underwater cameras and traditional slate and pencil data collection.
+
+The goal of this study is to replicate Neushul's study and collect data in a similar manner so that a direct comparison can be made between the current state of algal communities in the San Juan Islands, and a historical baseline that is deeper than most other quantitative data sets we have from that time period. They began their transects in June of 1962, placing our resurvey nearly 60 years after. 
+
+```{r, echo = FALSE}
+
+## Load Libraries
+
+library(tidyverse)
+library(gt)
+library(viridis)
+library(ggmap)
+library(algaeClassify)
+library(vistime)
+library(plotly)
+library(rmarkdown)
+library(DT)
+
+
+theme_set(theme_classic())
+
+```
+
+
+
+```{r}
+# Import all data and manage for analyses/visualizations
+
+# site details extracted
+site_deets <- read_csv("data/extraction/NeushulSiteDetailsPreplan.csv")
+
+# data from table 1
+Table_1 <- read_csv("data/extraction/Neushul_Table_1.csv")
+
+# data from cross-section figures
+x_sections <- read_csv("data/extraction/Neushul_Xsection_data-extractions.csv", 
+                       col_types = cols(`table-number` = col_character(), 
+                                        transect = col_character()))
+
+# list of algae from algae base scraping 
+algae_list <- read_csv("algae_list.csv")
+
+
+```
+
+
+
+# Approach
+
+
+This study has three main components: historical data extraction/pilot data collection; primary field collection; and synthesis. Data extraction is further broken into two categories, explicit extraction and calculated extraction. Explicit extraction is the scraping of published values within the paper (e.g.: transect depths, lengths, cluster analysis values, etc.). Calculated extraction are those values that must be inferred or calculated seperately from implicit data embedded within the paper (e.g.: GPS coordinates from maps, abundance calculations, etc.). Calculated extraction also includes those summaries or visualzations that we are able to create from extracted data not included in the orgininal paper (e.g.: diversity metrics, summary statistics, new clustering models, etc.).
+
+Figure 1: Map of Friday Harbor with beginning of original Neushul transects indicated in red. 
+```{r}
+# Map of transect sites
+
+FHL <- get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 16)
+ggmap(FHL) +
+  geom_point(aes(x = longitude, y = latitude), data = site_deets,
+             alpha = .5, color="darkred", size = 3)
+```
+
+
+## Explicit Extraction
+
+Neushul table 1 data was extracted directly by copying out values into a spreadsheet. Transect cross-section data was extracted by mapping a grid over each figure in GIMP, and then keyed out by eye. Cross-section values extracted included: transect segment (ft), transect segment depth (m), substrate type, icon representation of cover (species/group), and cover associated with Neushul table 1 (species/group).
+
+* Already extracted
+  + Table 1 data (community components)
+  + Figures 6-9 data (transect cross sections)
+  + Figure 2 data (dendrogram cluster distances)
+* To be extracted
+  + Table 2 (dendrogram summary)
+  
+  <br>
+  
+Table 1: Data extracted from cross-section figures 6-9.   
+```{r}
+
+datatable(x_sections, 
+         extensions = c('FixedColumns',"FixedHeader"),
+          options = list(scrollX = TRUE, 
+                         paging=TRUE,
+                         fixedHeader=TRUE))
+
+```
+
+## Calculated Extraction
+
+Starting GPS points for SCUBA transects were extracted from Figure 1 using Google Earth, and transect heading and length were taken by overlaying map images with compass bearings in GIMP, and referencing individual transect lengths in Figures 6-9. Data extracted will be analysed and transformed to provide additional data not explicity included in the publication. These data include:
+
+* Already extracted
+  + Transect GPS (Google Earth)
+  + Transect bearings (GIMP)
+  + Updated algal taxonomy (algaebase.org)
+* To be extracted 
+  + Algal frequency values (R)
+  + Equivalent method for cluster analysis (R)
+  + Addition summaries of diversity and overall transect similarity/differences (R)
+  
+  <br>
+
+Table 2: GPS points for transect origins extracted from Figure 1 using Google Earth. Transect length and maximum depth taken from transect cross-section figures.   
+```{r}  
+  
+# list of extracted GPS points from Figure 1
+datatable(site_deets)
+
+```
+  <br>
+
+Table 3: Identified algae from the orginal paper ('Names') and information extracted from algaebase.org ('Updated Taxonomy'). Species with 'NA' in updated taxonomy column must be manually verified. 
+```{r, fig.cap = "\\label{tab:algalnametab}"}
+
+# extract list of genus/species from table 1 and check against database, run rscript first if you don't want to have scraping take place in the markdown
+# algae_list <- spp_list_algaebase(Table_1, phyto.name = 'Name', lakename = "",
+#                  long = FALSE, write = FALSE)
+algae_list_update <- algae_list %>%
+  select(Name, genus, species) %>%
+  filter(!Name %in% c('Sea urchins', 'Barnacles', 'Hydroids', 'Lichen', 'Diatom crust (see 16 above)', 'Blue-green algae on mud')) %>%
+  unite("Updated Taxonomy", genus:species, sep = " ")
+datatable(algae_list_update)
+
+
+
+
+```
+
+<br>
+
+  
+## Field Pilot
+
+To identify more applicable methods to replicate data gathered in Neushul and to assess the time taken for each transect survey, a limited number of exploratory dives will be made around Brown Island. Between one and three representative transects will be identified from the original paper for this pilot. Additionally, snorkel surveys will done using similar methods along a shallow bathymetric concour, crossing the shoreward orgin of the original Brown Island transects. Dives will be made with the following specific goals (current plan is listed in parenthesis next to each item):
+
+1. Dive surveys
+  + lay transect tape (from GPS starting point along heading to depth [buddy 1]; data collected on return)
+  + video data capture (using GoPro underwater camera w/ lights; centered on transect line moving shoreward [buddy 2])
+  + uniform point count data collection (collected every 5 feet along transect: substrate type, all organsims directly above/below line on meter tape [buddy 1])
+2. Snorkel surveys
+  + lay transect parallel to shore (perpendicular to dive transects at low tide [buddy 1])
+  + track path of snorkel (using GPS in float [buddy 1])
+  + collect still images (every 25 feet to quantify community diversity [buddy 2])
+  + uniform point count data collection (collected every 50 feet to quantify community abundance [buddy 2])
+
+## Estimated Dives for Primary Field Collections
+
+The pilot data can likely be collected in 1-3 dives, and 1-2 snorkel trips. 
+
+## Planned Timeline
+
+```{r}
+
+# timeline data
+neushul_timeline <- read.csv(text="event,start,end
+                       Data Extraction,2021-06-26,2021-07-03
+                       Dive Surveys,2021-07-01,2021-07-03
+                       Snorkel Surveys,2021-07-05,2021-07-06
+                       Data Analysis,2021-07-03,2021-07-10
+                       Draft Write-up, 2021-07-01, 2021-07-12
+                       Final Report, 2021-07-13, 2021-07-13")
+
+gg_vistime(neushul_timeline, optimize_y = TRUE, linewidth = 20) 
+
+  ```
+
+
+
+# Budget
+
+Current estimates for boat time to do dive surveys (snorkel surveys opportunistic by power boat or by rowboat.)
+
+```{r}
+neushul_budget <- read.csv(text=
+                      "item, unit, quantity, cost, notes
+                      boat time, hours, 4, 86.00")
+neushul_budget <- neushul_budget %>%
+  mutate(across(cost, as.double),
+         total = quantity*cost)
+neushul_budget_table <- gt(neushul_budget) %>%
+  fmt_currency(
+    columns = c('cost', 'total'),
+    currency = "USD") %>%
+    grand_summary_rows(
+    columns = 'total',
+    fns = 'sum'
+  )
+neushul_budget_table      
+                
+```
+
+
+# References
+
+<!-- end of document -->
