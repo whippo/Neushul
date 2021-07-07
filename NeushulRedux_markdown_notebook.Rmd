@@ -121,7 +121,7 @@ Began data collection as part of the FHL Marine Botany final project.
 
 Finished about 40% of first dropcam survey from rowboat. Need to enter metadata into R workbook. Most of the footage was good, GoPro ran about an hour before the 32GB card was full. Need to make sure the light is adjusted properly between each deployment and that the float attached to the GoPro is clear of the lens. 
 
-##@ Snorkel
+### Snorkel
 
 
 ### SCUBA
@@ -130,7 +130,13 @@ Finished about 40% of first dropcam survey from rowboat. Need to enter metadata 
 
 Tested methods for data collection via SCUBA with GoPro, transect tape, and UPC datasheet. Need to: wear ankle weights, make longer cord for slate, make place on slate to hold pencil, make intervals along transect pre-written, have letter circle for substrate type, add abbreviations of algae at bottom of sheet for reference.
 
-# Statistical Analysis Notes
+# Analysis Notes
+
+## CoralNet
+
+2021-07-05
+
+Created labelset for photos and cropped annotation area to exlude most of the frame. Began identifying easy algae.
 
 
 
