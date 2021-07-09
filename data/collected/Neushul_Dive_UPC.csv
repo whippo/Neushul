@@ -1,0 +1,66 @@
+date,timeBegin,timeEnd,scubaSnorkel,dataCollector,transect,beginLat,beginLon,heading,distance_ft,depth_m,substrate,alga,associates,notes
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,200,24.6,Br,none,hydroids,wall
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,195,22.8,Br,none,hydroids,wall
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,185,19.6,H,none,opuntiella?,took sample | also Desmarestia sp. maybe drift?
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,175,17.7,Br,CALL,,took sample
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,165,16.4,H,NEFI,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,155,15.4,Br,NEFI | MAENR,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,145,14.7,Br,NEFI,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,135,14.0,Br,NEFI | FRGA | CALL,,took sample of Fryeella
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,125,13.3,Br,NEFI | MAFB,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,115,12.4,Br,CALL | Lacy red #1,,took sample of lacy red #1
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,105,12.1,S ,NEFI,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,95,11.7,S ,lacy red #1 | SALANI,,kelp baby
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,85,11.0,S ,lacy red #1 | big red blade #1,,took sample of big red blade #1
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,75,10.6,S ,SALANI ,Desmarestia sp. | big red blade #1,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,65,10.0,S ,NEFI | SALANI | COCO,Sparlingia pertusa,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,55,8.9,S ,COCO | pinched spihon red,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,45,7.8,S ,NEFI | MASP?,,took sample of maybe Mazzaella
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,35,6.4,Br,big red blade #1 | MASP,SALANI | NEFI,"Mazzaella? had bumps, took sample"
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,25,4.7,Br,SALANI | NEFI | MAENR,red turf,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,15,3.2,Br,NEFI,,
+2021-07-08,1030,1055,scuba ,Ross Whippo,33,48.5361820854273,-122.997889770748,080,5,1.3,Br,CORM,SAMU | NEFI | ULVA | SALANI | COCO,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,155,18.5,C,none,SAGA | mickey mouse | FRGA,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,145,18.2,C,none,SAGA | NEFI,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,135,17.7,C,none,red sac | red blade,took sample
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,125,17.2,C,FRGA,NEFI | PLCA | red fil,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,115,16.7,C,FRGA,feathered red,took sample
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,105,16.0,C,NEFI,red fil,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,95,15.4,C,NEFI,SAGA | big red fil,took sample
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,85,14.7,C,large red blade,red fil | NEFI,took sample
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,75,13.8,C,feathered red,NEFI | PLCA | FRGA,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,65,11.2,Br,NEFI,sm reds,"wall, inverts"
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,55,8.9,Br,NEFI,SALANI | SAGA,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,45,7.3,Br,NEFI | COSU? | MAENR,SALANI | lacy red | bladed red,took sample of potential COSU
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,35,5.4,Br,SALANI | NEFI | MASP?,red fil | red blades,took sample of potential MASP
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,25,4.3,Br,SALANI | NEFI | bushy red | bladed red,,took sample of bush-blade clump
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,15,2.7,Br,MASP | NEFI,COSU,
+2021-07-09,1020,1050,scuba ,Ross Whippo,3,48.5398305145593,-123.00297232402,035,5,1.5,Br,NEFI | SALANI | FUDI ,SAMU | ULVA | MASP,
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,195,13.2,S,ULVA,SPPE | SALANI | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,185,13.0,S,“red desmarestia”,SAGA | DESP | red clump,transect tape detached add 110 to every distance_ft measure | took sample of red des and clump
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,175,12.9,S,DESP,SAGA | ULVA | COCO,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,165,12.7,S,SAGA,COCO | DESP,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,155,12.6,S,none,COCO | DESP,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,145,12.4,S,NEFI,DESP | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,135,12.2,S,MASP  ,DESP | ULVA | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,125,12.1,S,NELU | DESP | SAGA,red rounded branch,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,115,12.0,S,none,FRGA | ULVA | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,105,11.8,S,SAGA,ULVA | DESP,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,95,11.7,S,none,COCO | DESP,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,85,11.6,S,DESP,SALANI | ULVA | red sheet on shell,transect tape detached add 110 to every distance_ft measure | sample of red sheet on shell
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,75,11.3,S,SAGA | ULVA,COCO  ,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,65,11.1,S,NEFI,DESP | SALANI | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,55,11.1,S,ULVA,SPPE | DESP | SALANI,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,45,11.0,S,SPPE,NEFI | DESP | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,35,10.8,S,none,DESP | MASP | COCO | ULVA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,25,10.6,S,SAGA,NELU | DESP | SALANI,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,15,10.3,S,SALANI ,DESP | NEFI | SAGA,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,5,9.9,S,SAGA,DESP | SALANI  ,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-5,8.5,S,DESP,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-15,8.5,S,DESP,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-25,7.8,S,none,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-35,6.5,S,SAGA,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-45,5.7,S,none,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-55,4.6,S,MASP  ,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-65,3.0,S,DESP,,transect tape detached add 110 to every distance_ft measure
+2021-07-09,1115,1150,scuba ,Ross Whippo,27,48.5409361299338,-123.007148178597,330,-75,2.5,S,SAMU,,transect tape detached add 110 to every distance_ft measure | still ~30 ft from shore
