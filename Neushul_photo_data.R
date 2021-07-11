@@ -62,6 +62,14 @@ annotations <- annotations %>%
   mutate(depth_MLLW = case_when(Date == '2021-07-01' ~ Depth - 0.9,
                                 Date == '2021-07-07' ~ Depth - 1.2))
 
+# export MLLW depths to csv
+MLLW_depths_dropcam <- annotations %>%
+  ungroup() %>%
+  select(Transect, Deployment, depth_MLLW) %>%
+  unite(ID, Transect, Deployment, sep = "_") %>%
+  distinct(ID, depth_MLLW)
+write_csv(MLLW_depths_dropcam, "MLLW_depths_dropcam.csv")
+
 # add red, green, brown labels
 annotations <- annotations %>%
   mutate(phylum = case_when(Label == "KELP" ~ "Brown",
@@ -103,8 +111,9 @@ anno_noobs <- left_join(anno_noobs, labelset, by = "Label")
 
 # ranked number of labels per photo
 anno_ranks <- anno_noobs %>%
-  group_by(Name, Transect, Label) %>%
+  group_by(Name, depth_MLLW, Transect, Label) %>%
   summarise(sum(count))
+names(anno_ranks)[names(anno_ranks)=="sum(count)"] <- "count"
 
 # short summed phyle per photo
 anno_noobs_short <- anno_noobs %>%
@@ -113,11 +122,53 @@ anno_noobs_short <- anno_noobs %>%
 names(anno_noobs_short)[names(anno_noobs_short)=="sum(count)"] <- "count"
 
 
+
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # DATA ANALYSES                                                                ####
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+#nMDS of photo groups 
 
+# make data wide
+anno_wide <- anno_ranks %>%
+  pivot_wider(names_from = Label, values_from = count, values_fill = 0)
+
+photo_mds <- metaMDS(anno_wide[,4:22], distance = "altGower")
+photo_mds_points <- photo_mds$points
+photo_mds_points <- data.frame(photo_mds_points)
+plot_data <- data.frame(anno_wide[,3], photo_mds_points)
+ggplot(plot_data, aes(x=MDS1, y=MDS2, fill = Transect)) + 
+  theme_classic() +
+  geom_point(aes(x=MDS1, y=MDS2, color = Transect), size = 4) +
+  scale_color_viridis(discrete = TRUE)
+
+# no good solution
+
+# MDS at the transect level
+anno_wide$depth_MLLW <- as.character(anno_wide$depth_MLLW)
+anno_trans_wide <- anno_wide %>%
+  group_by(Transect) %>%
+  summarise(across(where(is.numeric), sum))
+
+trans_mds <- metaMDS(anno_trans_wide[,2:20], distance = "altGower")
+trans_mds_points <- trans_mds$points
+trans_mds_points <- data.frame(trans_mds_points)
+plot_data <- data.frame(anno_trans_wide[,1], trans_mds_points)
+plot_data$Transect <- factor(plot_data$Transect, levels = c("31", "32", "34", "1", "3", "7", "10", "13", "33", "18"))
+ggplot(plot_data, aes(x=MDS1, y=MDS2, fill = Transect)) + 
+  theme_classic() +
+  geom_point(aes(x=MDS1, y=MDS2, color = Transect), size = 4) +
+  scale_color_viridis(discrete = TRUE)
+
+# mean depths of transects
+anno_noobs %>%
+  group_by(Transect) %>%
+  summarise(mean_depth = mean(depth_MLLW)) %>%
+  ungroup() %>%
+  group_by(mean_depth) %>%
+  arrange(desc(mean_depth))
+
+psych::pairs.panels(anno_noobs)
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # FIGURES                                                                      ####
@@ -150,6 +201,10 @@ ggplot(anno_noobs, aes(x = depth_MLLW, y = count, fill =  `Functional Group`)) +
   theme_classic()
 
 # FIGURE F - 
+ggplot(filter(anno_noobs, aes(x = depth_MLLW, y = count, color = Label))) +
+  geom_point(size = 4) +
+  scale_color_viridis(discrete = TRUE, option = "D", begin = 0, end = 0.9) +
+  theme_classic()
 
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#
