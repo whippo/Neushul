@@ -1,22 +1,28 @@
-Label ID,Short Code
-5905,ALMA
-1146,BARK
-5908,CHCA
-572,COCO
-640,DESP
-720,FUDI
-523,HASH
-756,KELP
-326,MAACR
-322,MAENR
-1150,MASP
-4115,MGSU
-5906,NEFI
-729,NELU
-3453,OBSC
-1064,RAFI
-797,SAMU
-369,SUPG
-1697,UBS
-584,ULVA
-2153,ZOMA
+Name,Short Code,Functional Group
+Hydroid/Bryozoan,HydBry,Other Invertebrates
+Kelp (unidentifed Laminariales),KELP,Other Invertebrates
+Echinoderms: sea urchin,Urchins,Other Invertebrates
+Substrate: Unconsolidated (soft),MGSU,Soft Substrate
+Substrate: Unconsolidated : pebble/gravel,SUPG,Soft Substrate
+Bare Rock,BARK,Hard Substrate
+Shell/ Shell Hash,HASH,Hard Substrate
+Obscured,OBSC,Other
+Alaria marginata,ALMA,Algae
+Callophyllis spp.,CALL,Algae
+Chondracanthus sp.,CHCA,Algae
+Costaria costata,COCO,Algae
+Constantinea rosa-marina,CORM,Algae
+Desmarestia sp.,DESP,Algae
+Fryeella gardneri,FRGA,Algae
+Fucus distichus,FUDI,Algae
+Macroalgae: Articulated calcareous: red,MAACR,Algae
+Macroalgae: Encrusting: red,MAENR,Algae
+Macroalgae: Filamentous / filiform : brown,MAFB,Algae
+Mazzaella splendens,MASP,Algae
+Neoagarum fimbriatum,NEFI,Algae
+Nereocystis luetkeana,NELU,Algae
+"Red algae, filamentous",RAFI,Algae
+Sargassum muticum,SAMU,Algae
+Unidentified red blade (substratum),UBS,Algae
+Ulva,ULVA,Algae
+Zostera marina,ZOMA,Seagrass

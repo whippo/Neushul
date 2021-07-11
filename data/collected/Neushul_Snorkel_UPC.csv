@@ -3,23 +3,71 @@ date,timeBegin,timeEnd,scubaSnorkel,dataCollector,transect,beginLat,beginLon,end
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,15,1.5,Br,FUDI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,25,1.5,Br,FUDI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,35,1.5,Br,FUDI,,
-2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,45,1.5,Br,ULSP,,
+2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,45,1.5,Br,ULVA,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,55,1.5,Br,RAFI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,65,1.5,B,RAFI,,new transect
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,75,1.5,Br,FUDI,,
-2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,85,1.5,Br,ULSP,,
+2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,85,1.5,Br,ULVA,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,95,1.5,Br,FUDI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,105,1.5,Br,RAFI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,115,1.5,B,RAFI,,
-2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,125,1.5,C,ULSP,,new transect
+2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,125,1.5,C,ULVA,,new transect
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,135,1.5,Br,FUDI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,145,1.5,Br,FUDI,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,155,1.5,B,FUDI,,
-2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,165,1.5,B,CCA,,
+2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,165,1.5,B,MAENR,,
 2021-07-06,1445,1540,snorkel,Miranda Roethler,1,48.53569,122.99809,48.53698,122.99896,175,1.5,Br,FUDI,,
 2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,185,1.5,Br,RAFI,,new transect
 2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,195,1.5,Br,FUDI,,
 2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,205,1.5,B,RAFI,,
 2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,215,1.5,Br,RAFI,,
-2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,225,1.5,Br,ULSP,,
-2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,235,1.5,Br,ULSP,,last point for day
+2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,225,1.5,Br,ULVA,,
+2021-07-06,1545,1600,snorkel,Miranda Roethler,2,48.53698,122.99896,48.53726,122.99963,235,1.5,Br,ULVA,,last point for day
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,5,1.5,Br,ULVA | SALANI,,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,10,1.5,Br,SAMU | SALANI,,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,15,1.5,Br,DESP | MASP | MAENR,SAMU | ULVA,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,20,1.5,Br,RAFI,SAMU  ,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,25,1.5,Br,SAMU | NEFI | MAENR,,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,30,1.5,Br,SAMU | SALANI,SAGA,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,35,1.5,Br,ULVA,COCO | SAMU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,40,1.5,Br,SAMU | ULVA | MAENR,SALANI,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,45,1.5,Br,COCO | MASP,SALANI | COCO,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,50,1.5,Br,SALANI | PLCA | MAENR,SAMU | NEFI,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,55,1.5,Br,SALANI | MAENR,ULVA | COCO | MASP,
+2021-07-10,1036,1106,snorkel,Ross Whippo,1,,,,,60,1.5,Br,COCO | RAFI,SALANI | ULVA,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,5,1.5,C,SALANI | FUDI,MASP | SAGA | COSU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,10,1.5,C,SALANI | ULVA,SAMU  ,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,15,1.5,C,FUDI | MASP,ULVA | COSU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,20,1.5,Br,COCO | DESP,ULVA | SAMU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,25,1.5,Br,SALANI  ,ULVA | CHCR | COSU | COCO,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,30,1.5,Br,COCO | NEFI,SAMU | PLCA,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,35,1.5,Br,COCO | MASP,ULVA | SALANI,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,40,1.5,C,SAMU | COCO | DESP,CHCR | COSU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,45,1.5,Br,MASP | NEFI,PLCA | SALANI | SAMU,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,50,1.5,Br,SALANI | MAENR,SAMU  ,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,55,1.5,Br,SAMU | COSU,SALANI | ULVA,
+2021-07-10,1036,1106,snorkel,Ross Whippo,2,,,,,60,1.5,Br,SAMU | SALANI,,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,5,1.5,Br,SALANI | SAMU | MASP,COSU,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,10,1.5,H,SAMU | MASP,COSU,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,15,1.5,Br,SALANI | MAENR,SAMU  ,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,20,1.5,Br,NEFI,,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,25,1.5,Br,COCO | SAMU | SALANI,,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,30,1.5,Br,SALANI  ,SAMU  ,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,35,1.5,B,SAMU | SALANI,,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,40,1.5,C,SAMU  ,,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,45,1.5,Br,SALANI | MASP,SAMU  ,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,50,1.5,Br,COCO | SALANI | RAFI,SAMU  ,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,55,1.5,Br,SAMU | MAENR,ULVA | NEFI,
+2021-07-10,1123,1130,snorkel,Ross Whippo,3,,,,,60,1.5,Br,MASP | veined red,,took sample
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,5,1.5,Br,SAMU | COCO  ,,
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,10,1.5,Br,SALANI | OPCA,SAMU  ,
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,15,1.5,Br,SALANI | MAENR,SAMU  ,
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,20,1.5,B,MASP  ,SALANI | NEFI,
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,25,1.5,Br,SALANI | NEFI,veined red,
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,30,1.5,Br,SALANI | NEFI,OPCA,wall
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,35,1.5,Br,NEFI,,vis reduced by wakes
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,40,1.5,Br,COSU,,vis reduced by wakes
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,45,1.5,Br,NEFI,,vis reduced by wakes
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,50,1.5,Br,COSU,,vis reduced by wakes
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,55,1.5,B,COCO  ,,vis reduced by wakes
+2021-07-10,1140,1151,snorkel,Ross Whippo,4,,,,,60,1.5,B,SALANI  ,,vis reduced by wakes
