@@ -102,7 +102,7 @@ dive_1 <- Neushul_Dive_UPC %>%
   unite("ID", transect, distance_ft, sep = "_", remove = FALSE)
 
 neush_1 <- Neushul_UPC_overlap %>%
-  select(transect, segment, depth, substrate, 'table-ID') %>%
+  select(transect, segment, depth, substrate, `table-ID`) %>%
   separate(segment, "distance_ft") %>%
   mutate(distance_ft = as.numeric(distance_ft) + 5) %>%
   separate(depth, "depth_MLLW" ) %>%
@@ -112,6 +112,73 @@ neush_1 <- Neushul_UPC_overlap %>%
 joined_UPC <- select(dive_1, ID:alga1) %>%
   full_join(neush_1, by = "ID")
 
+
+# add braoder categories for comparison
+
+joined_UPC <- joined_UPC %>%
+  mutate(cover_2021 = case_when(alga1 == "none" ~ "none",
+                         alga1 == "CALL"  ~ "red filamentous",
+                         alga1 == "NEFI" ~ "N. fimbriatum",
+                         alga1 == "NEFI " ~ "N. fimbriatum",
+                         alga1 == "lacy red #1 " ~ "red filamentous",
+                         alga1 == "SALANI" ~ "Laminariales spp.",
+                         alga1 == "SALANI " ~ "Laminariales spp.",
+                         alga1 == "COCO " ~ "C. costata",
+                         alga1 ==  "big red blade #1 " ~ "red blade",
+                         alga1 == "CORM" ~ "red blade",
+                         alga1 == "FRGA" ~ "red blade",
+                         alga1 == "large red blade" ~ "red blade",
+                         alga1 == "feathered red" ~ "red filamentous",
+                         alga1 == "MASP " ~ "red blade",
+                         alga1 == "MASP" ~ "red blade",
+                         alga1 == "ULVA" ~ "Ulva spp.",
+                         alga1 == "“red desmarestia”" ~ "red blade",
+                         alga1 == "DESP" ~ "Desmarestia spp.",
+                         alga1 == "SAGA" ~ "red filamentous",
+                         alga1 == "SAGA " ~ "red filamentous",
+                         alga1 == "SPPE" ~ "red blade",
+                         alga1 == "NELU " ~ "N. luetkeana",
+                         alga1 == "SAMU" ~ "S. muticum"))  
+joined_UPC <- joined_UPC %>%
+  mutate(cover_1963 = case_when(`table-ID` == "Crustose red algae" ~ "crustose red",
+                                 `table-ID` == "Desmarestia spp."  ~ "Desmarestia spp.",
+                                 `table-ID` == "Callophyllis spp." ~ "red filamentous",
+                                 `table-ID` == "Fryeela gardneri" ~ "red blade",
+                                 `table-ID` == "Agarum fimbriatum" ~ "N. fimbriatum", 
+                                 `table-ID` == "Laminaria spp." ~ "Laminariales spp.",
+                                 `table-ID` == "Ulvoids" ~ "Ulva spp.",
+                                 `table-ID` == "Alaria spp." ~ "Laminariales spp.",
+                                 `table-ID` == "Fuscus sp." ~ "Fucus spp.",
+                                 `table-ID` == "Costaria costata" ~ "C. costata",
+                                 `table-ID` == "Agarahiella coulteri" ~ "red filamentous",
+                                 `table-ID` == "Gloiopeltis furcata" ~ "red filamentous",
+                                 `table-ID` == "Diatom crust" ~ "brown filamentous",
+                                 `table-ID` == "Zostera marina" ~ "Z. marina",
+                                 `table-ID` == "Rhodymenia pertusa" ~ "red blade",
+                                 `table-ID` == "Hydroids" ~ "none"))  
+# filter out non-overlapping transect portions
+filtered_UPC <- joined_UPC %>%
+  filter(!is.na(cover_1963) & !is.na(cover_2021))
+filtered_UPC$one <- 1
+#assign trasect number to every occurence
+filtered_UPC <- filtered_UPC %>%
+  separate(ID, "transect", remove = FALSE)
+# short summed occurences per transect
+joined_UPC_short <- filtered_UPC %>%
+  group_by(transect, cover_1963, cover_2021, one) %>%
+  summarise(sum(one))
+names(joined_UPC_short)[names(joined_UPC_short)=="sum(one)"] <- "count"
+
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# FIGURES                                                                      ####
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ggplot(joined_UPC_short, aes(x = cover_1963, y = count)) +
+  geom_boxplot()
+ggplot(joined_UPC_short, aes(x = cover_2021, y = count)) +
+  geom_boxplot()
 
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#
