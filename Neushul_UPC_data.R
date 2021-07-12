@@ -59,6 +59,11 @@ Neushul_Dive_UPC <- Neushul_Dive_UPC %>%
   mutate(depth_MLLW = case_when(transect == '33' ~ depth_m + 0.4,
                                 transect == '3' ~ depth_m + 0.45,
                                 transect == '27' ~ depth_m + 0.45))
+# correct wrong distances
+Neushul_Dive_UPC <- Neushul_Dive_UPC %>%
+  mutate(distance_ft = case_when(transect == '33' ~ distance_ft,
+                              transect == '3' ~ distance_ft,
+                              transect == '27' ~ distance_ft + 110))
                                                  
 
 # SNORKEL UPC
@@ -79,11 +84,33 @@ Neushul_Xsection_data_extractions <- read_csv("data/extraction/Neushul_Xsection_
 Neushul_UPC_overlap <- Neushul_Xsection_data_extractions %>%
   filter(transect %in% c('3', '27', '33'))
 
+# export corrected depths to csv
+MLLW_depths_snorkscub <- Neushul_Dive_UPC %>%
+  select(date, scubaSnorkel, transect, distance_ft, depth_MLLW) 
+MLLW_depths_snorkscub <- bind_rows(MLLW_depths_snorkscub, Neushul_Snorkel_UPC[,c(1, 4, 6, 11, 17)])  
+write_csv(MLLW_depths_snorkscub, "MLLW_depths_snorkscub.csv")
+
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # DATA ANALYSES                                                                ####
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#   
+#   join Neushul data with dive surveys
+dive_1 <- Neushul_Dive_UPC %>%
+  select(transect, distance_ft, depth_MLLW, substrate, alga, associates) %>%
+  separate(alga, c("alga1", "alga2", "alga3", "alga4"), sep = "\\|") %>%
+  separate(associates, c('ass1', 'ass2', 'ass3', 'ass4', 'ass5'), sep = "\\|") %>%
+  unite("ID", transect, distance_ft, sep = "_", remove = FALSE)
+
+neush_1 <- Neushul_UPC_overlap %>%
+  select(transect, segment, depth, substrate, 'table-ID') %>%
+  separate(segment, "distance_ft") %>%
+  mutate(distance_ft = as.numeric(distance_ft) + 5) %>%
+  separate(depth, "depth_MLLW" ) %>%
+  separate(substrate, 'substrate') %>%
+  unite("ID", transect, distance_ft, sep = "_", remove = FALSE)
+
+joined_UPC <- select(dive_1, ID:alga1) %>%
+  full_join(neush_1, by = "ID")
 
 
 ####
