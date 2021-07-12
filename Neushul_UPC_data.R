@@ -175,7 +175,25 @@ filtered_UPC <- filtered_UPC %>%
   add_row(cover_2021 = "Z. marina", count = 0.01)
 
 
+# spread snorkel UPC algae into multiple columns
+snork_UPC <- Neushul_Snorkel_UPC %>%
+  separate(alga, c("alga1", "alga2", "alga3"), sep = "\\|")
+# try to spread algae into multiple rows
+snork_spread <- snork_UPC %>%
+  pivot_wider(names_from = c(alga1, alga2, alga3), values_from = depth_m, values_fill = 0)
 
+# sargassum data
+sarg_UPC <- snork_UPC %>%
+  separate(associates, c("ass1", "ass2", "ass3", "ass4"), sep = "\\|") %>%
+  select(date, distance_m, alga1:ass4, depth_MLLW)
+# replace "SAMU " with "SAMU"
+sarg_UPC <- data.frame(lapply(sarg_UPC, function(x) {gsub("SAMU ", "SAMU", x)}))
+sarg_only <- sarg_UPC %>%
+  filter(alga1 == "SAMU" | alga2 == "SAMU" | alga3 == "SAMU" | ass1 == "SAMU"| ass2 == "SAMU" | ass3 == "SAMU" | ass4 == "SAMU")
+segment_shallow <- sarg_UPC %>%
+  filter(date == "2021-07-06")
+segment_deep <- sarg_UPC %>%
+  filter(date == "2021-07-10")
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # FIGURES                                                                      ####
@@ -204,6 +222,11 @@ FigureZ <- ggarrange(UPC1963, UPC2021,
                      common.legend = TRUE, legend = "right",
                      heights = c(1, 1.35))
 FigureZ
+
+## SNORKEL UPC DATA
+
+
+
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#
 
