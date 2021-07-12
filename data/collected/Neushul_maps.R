@@ -63,16 +63,24 @@ site_deets <- site_deets %>%
 drop_points <- read_csv("data/collected/Neushul_Dropcam_Deployments.csv", 
                         col_types = cols(depth_m = col_double(), 
                                          transect = col_character()))
+Dive_GPS <- read_csv("data/collected/Dive_GPS.csv", 
+                     col_types = cols(transect = col_character()))
+Snorkel_GPS <- read_csv("data/collected/Snorkel_GPS.csv")
 
 
-FHL <- get_stamenmap(bbox = c(left = -123.009, bottom = 48.534, right = -122.995, top = 48.544), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 16)
+FHL <- get_stamenmap(bbox = c(left = -123.010, bottom = 48.534, right = -122.995, top = 48.544), maptype = "watercolor", crop = TRUE, force = FALSE, zoom = 16)
 ggmap(FHL) +
+  geom_line(aes(x = lon, y = lat), data = Snorkel_GPS, alpha = .5, color = "blue", size = 4) +
+  geom_line(aes(x = lon, y = lat), data = filter(Dive_GPS, transect == "27"), alpha = 1, color = "pink", size = 6) +
+  geom_line(aes(x = lon, y = lat), data = filter(Dive_GPS, transect == "3"), alpha = 1, color = "pink", size = 6) +
+  geom_line(aes(x = lon, y = lat), data = filter(Dive_GPS, transect == "33"), alpha = 1, color = "pink", size = 6) +
   geom_point(aes(x = lon, y = lat), data = drop_points,
-             alpha = .5, color="darkred", size = 3) +
-  geom_line(aes(x = lon, y = lat), data = Snorkel_GPS, alpha = .5, color = "blue", size = 4)
+             alpha = .5, color="darkred", size = 3)
 
-FHL
+bigmap <-  get_stamenmap(bbox = c(left = -123.018, bottom = 48.53, right = -122.99, top = 48.547), maptype = "watercolor", crop = FALSE, force = FALSE, zoom = 16)
+bigmap
 
+ggmap(bigmap)
 
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#

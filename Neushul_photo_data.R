@@ -194,17 +194,25 @@ autoplot(pca, loadings = TRUE, loadings.label = TRUE, data = df, colour = 'Trans
 
 # FIGURE A - total number of each category observed across all photos
 ggplot(annotations, aes(x = forcats::fct_infreq(Label))) +
-  geom_bar()
+  geom_bar() +
+  theme_classic() +
+  labs(x="label", y="count")
 
 # FIGURE B - mean amount of red, brown, and greens detected
-ggplot(filter(anno_noobs_short, phylum != "NA"), aes(x = phylum, y = count)) +
-  geom_boxplot()
+ggplot(filter(anno_noobs_short, phylum != "NA"), aes(x = phylum, y = count, fill = phylum)) +
+  geom_boxplot() +
+  labs(x = "algal group", y = "count") +
+  theme_classic() +
+  scale_fill_viridis(discrete = TRUE, option = "D", begin = 0.2, end = 0.9) +
+  labs(fill = "group")
 
 # Figure C - photo phylum composition by depth
 ggplot(filter(anno_noobs_short, phylum != "NA"), aes(x = depth_MLLW, y = count, color = phylum)) +
   geom_point(size = 4) +
-  scale_color_viridis(discrete = TRUE, option = "D", begin = 0, end = 0.9) +
-  theme_classic()
+  scale_color_viridis(discrete = TRUE, option = "D", begin = 0.2, end = 0.9) +
+  theme_classic() +
+  labs(x = "depth below MLLW", y = "count") +
+  labs(color = "group")
 
 # Figure D - label by depth
 ggplot(anno_noobs, aes(x = depth_MLLW, y = count, fill = Label)) +
@@ -216,6 +224,11 @@ ggplot(anno_noobs, aes(x = depth_MLLW, y = count, fill = Label)) +
 ggplot(anno_noobs, aes(x = depth_MLLW, y = count, fill =  `Functional Group`)) +
   geom_col() +
   scale_fill_viridis(option = "D", discrete = TRUE) +
+  theme_classic()
+
+ggplot(anno_noobs, aes(x = `Functional Group` , fill = `Functional Group`)) +
+  geom_histogram(stat = "count") +
+  scale_fill_viridis(option = "C", discrete = TRUE) +
   theme_classic()
 
 # FIGURE F - 
