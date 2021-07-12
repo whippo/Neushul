@@ -168,7 +168,25 @@ anno_noobs %>%
   group_by(mean_depth) %>%
   arrange(desc(mean_depth))
 
-psych::pairs.panels(anno_noobs)
+# PCA
+
+#photos
+photo_pca <- princomp(anno_wide[,4:22])
+summary(photo_pca)
+library(ggbiplot)
+ggbiplot(photo_pca)
+
+# ALGAE ONLY AUTOPLOT
+library(ggfortify)
+df <- anno_wide[,-c(1:3)] %>%
+  select(-Urchins, -HydBry, -BARK, -HASH, -MGSU)
+pca <- prcomp(df, scale. = TRUE)
+df$Transect <- anno_wide$Transect
+autoplot(pca, loadings = TRUE, loadings.label = TRUE, data = df, colour = 'Transect', size = 6, loadings.label.size = 6) +
+  theme_classic() +
+  scale_color_viridis(discrete = TRUE)
+
+
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # FIGURES                                                                      ####

@@ -44,6 +44,7 @@
 
 library(tidyverse)
 library(vegan)
+library(ggpubr)
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # READ IN AND PREPARE DATA                                                     ####
@@ -159,15 +160,20 @@ joined_UPC <- joined_UPC %>%
 # filter out non-overlapping transect portions
 filtered_UPC <- joined_UPC %>%
   filter(!is.na(cover_1963) & !is.na(cover_2021))
-filtered_UPC$one <- 1
+filtered_UPC$count <- 1
 #assign trasect number to every occurence
 filtered_UPC <- filtered_UPC %>%
   separate(ID, "transect", remove = FALSE)
-# short summed occurences per transect
-joined_UPC_short <- filtered_UPC %>%
-  group_by(transect, cover_1963, cover_2021, one) %>%
-  summarise(sum(one))
-names(joined_UPC_short)[names(joined_UPC_short)=="sum(one)"] <- "count"
+# add non-observed groups into both years to standardize axes in graphs
+filtered_UPC <- filtered_UPC %>%
+  add_row(cover_1963 = "S. muticum", count = 0.01) %>%
+  add_row(cover_1963 = "none", count = 0.01) %>%
+  add_row(cover_1963 = "N. leutkeana", count = 0.01) %>%
+  add_row(cover_2021 = "brown filamentous", count = 0.01) %>%
+  add_row(cover_2021 = "crustose red", count = 0.01) %>%
+  add_row(cover_2021 = "Fucus spp.", count = 0.01) %>%
+  add_row(cover_2021 = "Z. marina", count = 0.01)
+
 
 
 
@@ -175,11 +181,29 @@ names(joined_UPC_short)[names(joined_UPC_short)=="sum(one)"] <- "count"
 # FIGURES                                                                      ####
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-ggplot(joined_UPC_short, aes(x = cover_1963, y = count)) +
-  geom_boxplot()
-ggplot(joined_UPC_short, aes(x = cover_2021, y = count)) +
-  geom_boxplot()
 
+UPC1963 <- ggplot(subset(filtered_UPC, !is.na(cover_1963)), aes(x = cover_1963, y = count, fill = cover_1963)) +
+  geom_col() +
+  theme_classic() +
+  scale_fill_viridis(discrete = TRUE, option = "A") +
+  theme(axis.text.x=element_blank()) +
+  labs(x="1963", y="count") + 
+  scale_y_continuous(limits = c(0,17)) +
+  labs(fill = "cover")
+UPC2021 <- ggplot(subset(filtered_UPC, !is.na(cover_2021)), aes(x = cover_2021, y = count, fill = cover_2021)) +
+  geom_col() +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 270, vjust = 0.5, hjust=0)) +
+  scale_fill_viridis(discrete = TRUE, option = "A") +
+  labs(x="2021", y="count") + 
+  scale_y_continuous(limits = c(0,17)) 
+
+FigureZ <- ggarrange(UPC1963, UPC2021,
+                     labels = c("A", "B"),
+                     nrow = 2, ncol = 1,
+                     common.legend = TRUE, legend = "right",
+                     heights = c(1, 1.35))
+FigureZ
 ####
 #<<<<<<<<<<<<<<<<<<<<<<<<<<END OF SCRIPT>>>>>>>>>>>>>>>>>>>>>>>>#
 
