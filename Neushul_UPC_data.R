@@ -125,7 +125,7 @@ joined_UPC <- joined_UPC %>%
                          alga1 == "SALANI" ~ "Laminariales spp.",
                          alga1 == "SALANI " ~ "Laminariales spp.",
                          alga1 == "COCO " ~ "C. costata",
-                         alga1 ==  "big red blade #1 " ~ "red blade",
+                          alga1 ==  "big red blade #1 " ~ "red blade",
                          alga1 == "CORM" ~ "red blade",
                          alga1 == "FRGA" ~ "red blade",
                          alga1 == "large red blade" ~ "red blade",
@@ -194,6 +194,11 @@ segment_shallow <- sarg_UPC %>%
   filter(date == "2021-07-06")
 segment_deep <- sarg_UPC %>%
   filter(date == "2021-07-10")
+
+
+#### SPEICES LIST
+
+
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # FIGURES                                                                      ####

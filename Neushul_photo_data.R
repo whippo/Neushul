@@ -186,6 +186,11 @@ autoplot(pca, loadings = TRUE, loadings.label = TRUE, data = df, colour = 'Trans
   theme_classic() +
   scale_color_viridis(discrete = TRUE)
 
+# Complete species list of everything we saw:
+
+species_list <- read_csv("data/collected/species_list.csv")
+
+
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
