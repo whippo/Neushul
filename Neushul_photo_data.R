@@ -190,7 +190,7 @@ autoplot(pca, loadings = TRUE, loadings.label = TRUE, data = df, colour = 'Trans
 
 species_list <- read_csv("data/collected/species_list.csv")
 
-
+  
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

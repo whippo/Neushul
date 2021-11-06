@@ -45,6 +45,7 @@
 library(tidyverse)
 library(vegan)
 library(ggpubr)
+library(viridis)
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # READ IN AND PREPARE DATA                                                     ####
@@ -66,6 +67,7 @@ Neushul_Dive_UPC <- Neushul_Dive_UPC %>%
                               transect == '3' ~ distance_ft,
                               transect == '27' ~ distance_ft + 110))
                                                  
+
 
 # SNORKEL UPC
 Neushul_Snorkel_UPC <- read_csv("data/collected/Neushul_Snorkel_UPC.csv", 
@@ -204,22 +206,63 @@ segment_deep <- sarg_UPC %>%
 # FIGURES                                                                      ####
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+UPC_species1963 <- filtered_UPC$cover_1963 
+UPC_species2021 <- filtered_UPC$cover_2021
+UPC_species <- intersect(UPC_species1963, UPC_species2021)
 
-UPC1963 <- ggplot(subset(filtered_UPC, !is.na(cover_1963)), aes(x = cover_1963, y = count, fill = cover_1963)) +
+
+filtered_UPC_subset_1963 <- subset(filtered_UPC, !is.na(cover_1963))
+filtered_UPC_subset_1963$cover_1963<- factor(filtered_UPC_subset_1963$cover_1963, levels = c(
+  "N. fimbriatum",
+  "Laminariales spp.",
+  "red filamentous",
+  "C. costata",
+  "crustose red",
+  "Z. marina",
+  "Desmarestia spp.",
+  "brown filamentous",
+  "Fucus spp.",
+  "red blade",
+  "Ulva spp.",
+  "N. leutkeana",
+  "S. muticum",
+  "none"))
+filtered_UPC_subset_2021 <- subset(filtered_UPC, !is.na(cover_2021))
+filtered_UPC_subset_2021$cover_2021 <- factor(filtered_UPC_subset_2021$cover_2021, levels = c(
+  "N. fimbriatum",
+  "Laminariales spp.",
+  "red filamentous",
+  "C. costata",
+  "crustose red",
+  "Z. marina",
+  "Desmarestia spp.",
+  "brown filamentous",
+  "Fucus spp.",
+  "red blade",
+  "Ulva spp.",
+  "N. luetkeana",
+  "S. muticum",
+  "none"))
+
+orgPal <- setNames(viridis_pal(option = "A")(14), levels(UPC_species))
+
+UPC1963 <- ggplot(filtered_UPC_subset_1963, aes(x = reorder(cover_1963, -count, sum), y = count, fill = cover_1963)) +
   geom_col() +
   theme_classic() +
-  scale_fill_viridis(discrete = TRUE, option = "A") +
+  scale_fill_manual(values = orgPal) +
   theme(axis.text.x=element_blank()) +
-  labs(x="1963", y="count") + 
+  labs(x="", y="count") + 
   scale_y_continuous(limits = c(0,17)) +
-  labs(fill = "cover")
-UPC2021 <- ggplot(subset(filtered_UPC, !is.na(cover_2021)), aes(x = cover_2021, y = count, fill = cover_2021)) +
+  labs(fill = "cover") +
+  annotate("text", x = 13.5, y = 16.5, label= "1967", size = 7, fontface = "bold")
+UPC2021 <- ggplot(filtered_UPC_subset_2021, aes(x = cover_2021, y = count, fill = cover_2021)) +
   geom_col() +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 270, vjust = 0.5, hjust=0)) +
-  scale_fill_viridis(discrete = TRUE, option = "A") +
-  labs(x="2021", y="count") + 
-  scale_y_continuous(limits = c(0,17)) 
+  scale_fill_manual(values = orgPal) +
+  labs(x="", y="count") + 
+  scale_y_continuous(limits = c(0,17)) +
+  annotate("text", x = 13.5, y = 16.5, label = "2021", size = 7, fontface = "bold")
 
 FigureZ <- ggarrange(UPC1963, UPC2021,
                      labels = c("A", "B"),
